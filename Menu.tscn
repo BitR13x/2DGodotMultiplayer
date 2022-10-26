@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Menu.gd" type="Script" id=1]
+
+[node name="Network_setup" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_top = -1.0
+margin_right = 1.0
+margin_bottom = -1.0
+script = ExtResource( 1 )
+
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="IpAddr" type="LineEdit" parent="Control"]
+margin_left = 38.0
+margin_top = 29.0
+margin_right = 169.0
+margin_bottom = 53.0
+text = "IP Address"
+
+[node name="CreateServer" type="Button" parent="Control"]
+margin_left = 52.0
+margin_top = 115.0
+margin_right = 152.0
+margin_bottom = 140.0
+text = "Create Server"
+
+[node name="JoinServer" type="Button" parent="Control"]
+margin_left = 52.0
+margin_top = 71.0
+margin_right = 152.0
+margin_bottom = 96.0
+text = "Join Server"
+
+[node name="StartGame" type="Button" parent="."]
+margin_left = 218.0
+margin_top = 14.0
+margin_right = 333.0
+margin_bottom = 59.0
+text = "Start Game"
+
+[connection signal="pressed" from="Control/CreateServer" to="." method="_on_CreateServer_pressed"]
+[connection signal="pressed" from="Control/JoinServer" to="." method="_on_JoinServer_pressed"]
+[connection signal="pressed" from="StartGame" to="." method="_on_StartGame_pressed"]
