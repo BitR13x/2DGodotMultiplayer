@@ -8,7 +8,7 @@ This repository include instancing players into game world and player movement.
 ### Explanation How Is It Working
 If you need some explanation how is it working then head to my article about this repository on "Medium"
 
-*Here will be link soon*
+https://medium.com/@bitr13x/how-to-make-a-simple-2d-multiplayer-game-in-godot-6247b68d0af0
 
 
 ### For Beginners Recommended
