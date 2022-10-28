@@ -46,6 +46,31 @@ func _process(_delta) -> void:
 			if not tween.is_active():
 				move_and_slide(puppet_velocity * speed)
 
+puppet var puppet_hp = max_puppet_hp setget puppet_hp_set
+puppet var max_puppet_hp = 100
+var health := 100
+var max_health := health
+
+func puppet_hp_set(new_value):
+	puppet_hp = clamp(new_value, 0, max_puppet_hp)
+	if get_tree().has_network_peer():
+		if not is_network_master():
+			health = puppet_hp
+
+func damage(dmg):
+	var value = health - dmg
+	health = clamp(value, 0, max_health)
+
+	if get_tree().has_network_peer():
+		if is_network_master():
+			rset("puppet_hp", health)
+			if health <= 0:
+				self.rpc("die")
+
+sync func die() -> void:
+	self.queue_free()
+
+
 sync func update_position(pos):
 	# function for updating player position outside this script
 	global_position = pos
